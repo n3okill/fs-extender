@@ -1,0 +1,11 @@
+{
+    "extension": [
+        "ts"
+    ],
+    "spec": "test/**/*.test.ts",
+    "require": "ts-node/register",
+    "colors": true,
+    "recursive": "true",
+    "exclude":["test/patch/memory_leak.test.*","test/patch/maxOpen.test.*","test/externalfs/*.test.*"],
+    "check-leaks":true
+}
