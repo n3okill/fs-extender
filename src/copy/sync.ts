@@ -94,6 +94,7 @@ function _copy(options: util._CopyOptionsInternal): util.CopyStats {
 }
 
 /** @internal */
+/* istanbul ignore next */
 function checkPathsSync(src: _PathLike, dst: _PathLike, options: util._CopyOptionsInternal): TGetStats {
     const stats = getStatsSync(src, dst, options);
 
@@ -124,6 +125,7 @@ function checkPathsSync(src: _PathLike, dst: _PathLike, options: util._CopyOptio
 // checks the src and dest inodes. It starts from the deepest
 // parent and stops once it reaches the src parent or the root path.
 /** @internal */
+/* istanbul ignore next */
 function checkParentPathsSync(
     src: _PathLike,
     srcStat: fs.Stats | fs.BigIntStats,
@@ -137,7 +139,6 @@ function checkParentPathsSync(
     }
     try {
         const dstStat = fs.statSync(dstParent);
-        /* istanbul ignore next */
         if (areIdentical(srcStat, dstStat)) {
             const e = createError("EINVAL", `Cannot copy '${src}' to a subdirectory of self '${dst}'`);
             throw e;
@@ -147,12 +148,12 @@ function checkParentPathsSync(
         if ((err as NodeJS.ErrnoException).code === "ENOENT") {
             return;
         }
-        /* istanbul ignore next */
         throw err;
     }
 }
 
 /** @internal */
+/* istanbul ignore next */
 function getStatsSync(src: _PathLike, dst: _PathLike, options: util._CopyOptionsInternal): TGetStats {
     const statFn = options.dereference ? fs.statSync : fs.lstatSync;
     const statSrc = statFn(src);
@@ -163,7 +164,6 @@ function getStatsSync(src: _PathLike, dst: _PathLike, options: util._CopyOptions
         if ((err as NodeJS.ErrnoException).code === "ENOENT") {
             return [statSrc, undefined as never];
         }
-        /* istanbul ignore next */
         throw err;
     }
 }
@@ -231,6 +231,7 @@ function loadItemsSync(options: util._CopyOptionsInternal): util.CopyStats {
 }
 
 /** @internal */
+/* istanbul ignore next */
 function onErrorSync(err: NodeJS.ErrnoException, options: util._CopyOptionsInternal): void {
     options.statistics.errors++;
     /* istanbul ignore next */
@@ -244,6 +245,7 @@ function onErrorSync(err: NodeJS.ErrnoException, options: util._CopyOptionsInter
 }
 
 /** @internal */
+/* istanbul ignore next */
 function copyOnErrorSync(err: NodeJS.ErrnoException, options: util._CopyOptionsInternal): util.CopyStats {
     onErrorSync(err, options);
     if (options.stopOnError) {
@@ -254,6 +256,7 @@ function copyOnErrorSync(err: NodeJS.ErrnoException, options: util._CopyOptionsI
 }
 
 /** @internal */
+/* istanbul ignore next */
 function copyItemSync(options: util._CopyOptionsInternal): util.CopyStats {
     const item = options.itemsToCopy?.shift();
     if (item) {
@@ -306,6 +309,7 @@ function onDirSync(item: FindResultType<string | Buffer>, options: util._CopyOpt
 }
 
 /** @internal */
+/* istanbul ignore next */
 function onFileSync(item: FindResultType<string | Buffer>, options: util._CopyOptionsInternal): util.CopyStats {
     const target = replace(item.path, options.src, options.dst);
     try {
@@ -354,6 +358,7 @@ function rmFileSync(target: _PathLike, options: util._CopyOptionsInternal): void
 }
 
 /** @internal */
+/* istanbul ignore next */
 function isWritableSync(path: _PathLike, options: util._CopyOptionsInternal): boolean {
     const stat = options.dereference ? fs.statSync : fs.lstatSync;
     try {
@@ -463,26 +468,26 @@ function setFileModeSync(target: _PathLike, mode: fs.Mode) {
 }
 
 /** @internal */
+/* istanbul ignore next */
 function onLinkSync(item: FindResultType<string | Buffer>, options: util._CopyOptionsInternal): util.CopyStats {
     const target = replace(item.path, options.src, options.dst);
     let resolvedPath;
     try {
         resolvedPath = fs.readlinkSync(item.path);
     } catch (err) {
-        /* istanbul ignore next */
         return copyOnErrorSync(err as NodeJS.ErrnoException, options);
     }
     return checkLinkSync(resolvedPath, target, item, options);
 }
 
 /** @internal */
+/* istanbul ignore next */
 function checkLinkSync(
     resolvedPath: _PathLike,
     target: _PathLike,
     item: FindResultType<string | Buffer>,
     options: util._CopyOptionsInternal
 ): util.CopyStats {
-    /* istanbul ignore next */
     if (options.dereference) {
         resolvedPath = NodePath.resolve(process.cwd(), resolvedPath);
     }
@@ -494,7 +499,6 @@ function checkLinkSync(
         return makeLinkSync(resolvedPath, target, item, options);
     }
     let targetDst;
-    /* istanbul ignore next */
     try {
         targetDst = fs.readlinkSync(target);
     } catch (err) {
@@ -503,21 +507,18 @@ function checkLinkSync(
         }
         return copyOnErrorSync(err as NodeJS.ErrnoException, options);
     }
-    /* istanbul ignore next */
     if (options.dereference) {
         targetDst = NodePath.resolve(process.cwd(), targetDst);
     }
-    /* istanbul ignore next */
     if (equal(targetDst, resolvedPath)) {
         return copyItemSync(options);
     }
-    /* istanbul ignore next */
     rmFileSync(target, options);
-    /* istanbul ignore next */
     return makeLinkSync(resolvedPath, target, item, options);
 }
 
 /** @internal */
+/* istanbul ignore next */
 function makeLinkSync(
     resolvedPath: _PathLike,
     target: _PathLike,
@@ -528,7 +529,6 @@ function makeLinkSync(
         fs.symlinkSync(resolvedPath, target);
         options.statistics.copied.links++;
     } catch (err) {
-        /* istanbul ignore next */
         return copyOnErrorSync(err as NodeJS.ErrnoException, options);
     }
     return copyItemSync(options);

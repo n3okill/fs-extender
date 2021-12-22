@@ -743,7 +743,11 @@ export function statIsSymbolicLink(
  * @param [type='file']
  * @return Fulfills with `undefined` upon success.
  */
-export function symlink(target: NodeFs.PathLike, path: NodeFs.PathLike, type?: "dir" | "file" | "junction" | null): Promise<void> {
+export function symlink(
+    target: NodeFs.PathLike,
+    path: NodeFs.PathLike,
+    type?: "dir" | "file" | "junction" | null
+): Promise<void> {
     return Reflect.apply(promisify(fs.symlink), fs, [target, path, type]);
 }
 

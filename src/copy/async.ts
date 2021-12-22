@@ -111,6 +111,7 @@ async function _copy(options: util._CopyOptionsInternal): Promise<util.CopyStats
 }
 
 /** @internal */
+/* istanbul ignore next */
 async function checkPaths(src: _PathLike, dst: _PathLike, options: util._CopyOptionsInternal): Promise<TGetStats> {
     const stats = await getStats(src, dst, options);
 
@@ -150,6 +151,7 @@ async function checkPaths(src: _PathLike, dst: _PathLike, options: util._CopyOpt
 // checks the src and dest inodes. It starts from the deepest
 // parent and stops once it reaches the src parent or the root path.
 /** @internal */
+/* istanbul ignore next */
 async function checkParentPaths(
     src: _PathLike,
     srcStat: fs.Stats | fs.BigIntStats,
@@ -163,7 +165,6 @@ async function checkParentPaths(
     }
     try {
         const dstStat = await fs.promises.stat(dstParent);
-        /* istanbul ignore next */
         if (areIdentical(srcStat, dstStat)) {
             const e = createError("EINVAL", `Cannot copy '${src}' to a subdirectory of self '${dst}'`);
             throw e;
@@ -173,12 +174,12 @@ async function checkParentPaths(
         if ((err as NodeJS.ErrnoException).code === "ENOENT") {
             return;
         }
-        /* istanbul ignore next */
         throw err;
     }
 }
 
 /** @internal */
+/* istanbul ignore next */
 async function getStats(src: _PathLike, dst: _PathLike, options: util._CopyOptionsInternal): Promise<TGetStats> {
     const statFn = options.dereference ? fs.promises.stat : fs.promises.lstat;
     const statSrc = await statFn(src);
@@ -225,6 +226,7 @@ function createError(code: string, message: string): Error {
 }
 
 /** @internal */
+/* istanbul ignore next */
 function writeToStream(
     options: util._CopyOptionsInternal,
     item: find.FindResultType<string | Buffer>,
@@ -289,6 +291,7 @@ async function loadItems(options: util._CopyOptionsInternal): Promise<util.CopyS
 }
 
 /** @internal */
+/* istanbul ignore next */
 async function onError(err: NodeJS.ErrnoException, options: util._CopyOptionsInternal): Promise<void> {
     options.statistics.errors++;
     /* istanbul ignore next */
@@ -310,6 +313,7 @@ async function onError(err: NodeJS.ErrnoException, options: util._CopyOptionsInt
 }
 
 /** @internal */
+/* istanbul ignore next */
 async function copyOnError(
     err: NodeJS.ErrnoException,
     options: util._CopyOptionsInternal,
@@ -325,6 +329,7 @@ async function copyOnError(
 }
 
 /** @internal */
+/* istanbul ignore next */
 async function copyItem(options: util._CopyOptionsInternal): Promise<util.CopyStats> {
     const item = options.itemsToCopy?.shift();
     if (item) {
@@ -382,6 +387,7 @@ async function onDir(
 }
 
 /** @internal */
+/* istanbul ignore next */
 async function onFile(
     item: find.FindResultType<string | Buffer>,
     options: util._CopyOptionsInternal
@@ -425,12 +431,14 @@ async function onFile(
 }
 
 /** @internal */
+/* istanbul ignore next */
 async function rmFile(target: _PathLike, options: util._CopyOptionsInternal): Promise<void> {
     await fs.promises.unlink(target);
     options.statistics.overwrited++;
 }
 
 /** @internal */
+/* istanbul ignore next */
 async function isWritable(path: _PathLike, options: util._CopyOptionsInternal): Promise<boolean> {
     const stat = options.dereference ? fs.promises.stat : fs.promises.lstat;
     try {
@@ -532,6 +540,7 @@ async function setFileMode(target: _PathLike, mode: fs.Mode) {
 }
 
 /** @internal */
+/* istanbul ignore next */
 async function onLink(
     item: find.FindResultType<string | Buffer>,
     options: util._CopyOptionsInternal
@@ -548,6 +557,7 @@ async function onLink(
 }
 
 /** @internal */
+/* istanbul ignore next */
 async function checkLink(
     resolvedPath: _PathLike,
     target: _PathLike,
@@ -588,6 +598,7 @@ async function checkLink(
 }
 
 /** @internal */
+/* istanbul ignore next */
 async function makeLink(
     resolvedPath: _PathLike,
     target: _PathLike,

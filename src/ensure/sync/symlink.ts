@@ -48,6 +48,7 @@ export function symlinkPathsSync(srcPath: fs.PathLike, dstPath: fs.PathLike): ut
 }
 
 /** @internal */
+/* istanbul ignore next: not tested in windows without Admin perms */
 function symlinkType(srcPath: fs.PathLike, options: util._EnsureOptionsSymlinkInternal): util.EnsureOptionsSymlinkType {
     if (options.type) {
         return options.type;
@@ -75,12 +76,12 @@ function symlinkType(srcPath: fs.PathLike, options: util._EnsureOptionsSymlinkIn
  * - `type` - the type of the symlink
  * @return `dstPath: fs.PathLike`
  */
+/* istanbul ignore next: not tested in windows without Admin perms */
 export function ensureSymlinkSync(
     srcPath: fs.PathLike,
     dstPath: fs.PathLike,
     options?: util.EnsureOptionsSymlink
 ): fs.PathLike {
-    /* istanbul ignore next: not tested in windows without Admin perms */
     if (Type.isString(options)) {
         options = { type: options as util.EnsureOptionsSymlinkType };
     }

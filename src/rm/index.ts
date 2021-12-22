@@ -202,6 +202,7 @@ export function rm(path: fs.PathLike, options?: unknown, callback?: unknown): vo
 async function _rm(path: string | Buffer, options: _EmptyDirOptionsInternal, ignoreFirst = false): Promise<void> {
     try {
         const stat = await fs.promises.lstat(path);
+        /* istanbul ignore next */
         if (stat.isDirectory() && !options.recursive) {
             const err: NodeJS.ErrnoException = new Error(
                 `Path is a directory: rm returned EISDIR (is a directory) '${path}'`
@@ -238,6 +239,7 @@ async function _rm(path: string | Buffer, options: _EmptyDirOptionsInternal, ign
         await fs.promises.unlink(item.path);
     }
 
+    /* istanbul ignore next */
     while (itemsIsDir.length) {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         const item = itemsIsDir.pop()!;
@@ -460,6 +462,7 @@ export function emptyDirSync(path: fs.PathLike, options?: EmptyDirOptions): void
     try {
         fs.readdirSync(path);
     } catch (err) {
+        /* istanbul ignore next */
         if ((err as NodeJS.ErrnoException).code !== "EEXIST") {
             mkdirp.mkdirpSync(path);
             return;
@@ -467,7 +470,7 @@ export function emptyDirSync(path: fs.PathLike, options?: EmptyDirOptions): void
             throw err;
         }
     }
-    _rmSync2(path, opt, true);
+    _rmSync(path, opt, true);
 }
 
 /**
@@ -500,13 +503,14 @@ export function rmSync(path: fs.PathLike, options?: RmOptions): void {
     if (isRoot) {
         throw isRoot;
     }
-    _rmSync2(path, opt);
+    _rmSync(path, opt);
 }
 
 /**@internal */
-function _rmSync2(path: fs.PathLike, options: _EmptyDirOptionsInternal, ignoreFirst = false): void {
+function _rmSync(path: fs.PathLike, options: _EmptyDirOptionsInternal, ignoreFirst = false): void {
     try {
         const stat = fs.lstatSync(path);
+        /* istanbul ignore next */
         if (stat.isDirectory() && !options.recursive) {
             const err: NodeJS.ErrnoException = new Error(
                 `Path is a directory: rm returned EISDIR (is a directory) '${path}'`
@@ -514,6 +518,7 @@ function _rmSync2(path: fs.PathLike, options: _EmptyDirOptionsInternal, ignoreFi
             err.code = "EISDIR";
             throw err;
         }
+        /* istanbul ignore next */
         if (stat.isFile()) {
             fs.unlinkSync(path);
             return;
@@ -541,6 +546,7 @@ function _rmSync2(path: fs.PathLike, options: _EmptyDirOptionsInternal, ignoreFi
         const item = itemsNotDir.pop()!;
         fs.unlinkSync(item.path);
     }
+    /* istanbul ignore next */
     while (itemsIsDir.length) {
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         const item = itemsIsDir.pop()!;

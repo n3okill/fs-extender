@@ -75,6 +75,7 @@ function compareFiles(
 }
 
 /** @internal */
+/* istanbul ignore next */
 async function statCompare(
     path1: fs.PathLike,
     path2: fs.PathLike,
@@ -150,6 +151,7 @@ export function filesByte(
     path2: fs.PathLike,
     callback: (err: NodeJS.ErrnoException, equal: boolean) => void
 ): void;
+/* istanbul ignore next */
 export function filesByte(path1: fs.PathLike, path2: fs.PathLike, options?: unknown, callback?: unknown): void {
     const opt = internal.getOptions(options);
     const cb = util.getCallback(options, callback);
@@ -244,6 +246,7 @@ export function filesHash(
     path2: fs.PathLike,
     callback: (err: NodeJS.ErrnoException, equal: boolean) => void
 ): void;
+/* istanbul ignore next */
 export function filesHash(path1: fs.PathLike, path2: fs.PathLike, options?: unknown, callback?: unknown): void {
     const opt = internal.getOptions(options);
     const cb = util.getCallback(options, callback);
@@ -310,6 +313,7 @@ export namespace promises {
 }
 
 /** @internal */
+/* istanbul ignore next */
 function statCompareSync(file1: fs.PathLike, file2: fs.PathLike, options: internal._CompareOptionsInternal): boolean {
     const statSync = options.dereference ? fs.statSync : fs.lstatSync;
     const stat1 = statSync(file1);

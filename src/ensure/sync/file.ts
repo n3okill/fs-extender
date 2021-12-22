@@ -6,6 +6,7 @@ import { Type } from "@n3okill/utils";
 import * as NodeFs from "fs";
 
 /** @internal */
+/* istanbul ignore next */
 function ensureWriteStream(path: fs.PathLike, options: util._EnsureOptionsFileInternal): NodeFs.WriteStream {
     return fs.createWriteStream(path, options.streamOptions);
 }
@@ -24,6 +25,7 @@ function ensureWriteFile(file: fs.PathLike, options: util._EnsureOptionsFileInte
 }
 
 /** @internal */
+/* istanbul ignore next */
 function createFileSync(file: fs.PathLike, options: util._EnsureOptionsFileInternal): NodeFs.WriteStream | fs.PathLike {
     const dirOpt: util.EnsureOptionsDir = {};
     if (!Type.isNullOrUndefined(options.dirMode)) {
@@ -83,7 +85,7 @@ export function ensureFileSync(path: fs.PathLike, options?: util.EnsureOptionsFi
     } catch (err) {
         return createFileSync(path, opt);
     }
-
+    /* istanbul ignore next */
     if (stat.isFile()) {
         if (opt.mode && (stat.mode & 0o777) !== opt.mode) {
             fs.chmodSync(path, opt.mode);

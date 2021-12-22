@@ -151,6 +151,7 @@ async function _list(path: fs.PathLike, options: _ListOptionsInternal): Promise<
                     }
                 } catch (er) {
                     const err = er as NodeJS.ErrnoException;
+                    /* istanbul ignore next */
                     if (
                         !options.ignoreAccessError ||
                         (options.ignoreAccessError && !(err.code === "EACCES" || err.code === "EPERM"))
@@ -270,6 +271,7 @@ export function listSync(path: fs.PathLike, options?: unknown): unknown {
                     }
                 } catch (er) {
                     const err = er as NodeJS.ErrnoException;
+                    /* istanbul ignore next */
                     if (
                         !opt.ignoreAccessError ||
                         (opt.ignoreAccessError && !(err.code === "EACCES" || err.code === "EPERM"))

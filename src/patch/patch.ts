@@ -349,11 +349,15 @@ export function appendFile(
 //
 // When running as root, or if other types of errors are
 // encountered, then it's strict.
+/* istanbul ignore next */
 function chownErOk(err: NodeJS.ErrnoException | null) {
-    if (!err) return true;
+    if (!err) {
+        return true;
+    }
 
-    /* istanbul ignore next */
-    if (err.code === "ENOSYS") return true;
+    if (err.code === "ENOSYS") {
+        return true;
+    }
 
     const nonroot = !process.getuid || process.getuid() !== 0;
     if (nonroot) {
@@ -364,6 +368,7 @@ function chownErOk(err: NodeJS.ErrnoException | null) {
 }
 
 /** @internal*/
+/* istanbul ignore next */
 function chownFix(
     orig: CallableFunction,
     path: NodeFs.PathLike | number,
@@ -371,7 +376,6 @@ function chownFix(
     gid: number,
     callback: NodeFs.NoParamCallback
 ): void {
-    /* istanbul ignore next */
     if (!IgnorePatch) {
         return Reflect.apply(orig, fs, [
             path,
@@ -385,6 +389,7 @@ function chownFix(
 }
 
 /** @internal*/
+/* istanbul ignore next */
 function chmodFix(
     orig: CallableFunction,
     path: NodeFs.PathLike | number,
@@ -398,41 +403,38 @@ function chmodFix(
             (err: NodeJS.ErrnoException | null) => callback(chownErOk(err) ? null : err),
         ]);
     } else {
-        /* istanbul ignore next */
         return Reflect.apply(orig, fs, [path, mode, callback]);
     }
 }
 
 /** @internal*/
+/* istanbul ignore next */
 function chownFixSync(orig: CallableFunction, path: NodeFs.PathLike | number, uid: number, gid: number): void {
     if (!IgnorePatch) {
         try {
             return Reflect.apply(orig, fs, [path, uid, gid]);
         } catch (err) {
-            /* istanbul ignore next */
             if (!chownErOk(err as NodeJS.ErrnoException)) {
                 throw err;
             }
         }
     } else {
-        /* istanbul ignore next */
         return Reflect.apply(orig, fs, [path, uid, gid]);
     }
 }
 
 /** @internal*/
+/* istanbul ignore next */
 function chmodFixSync(orig: CallableFunction, path: NodeFs.PathLike | number, mode: NodeFs.Mode): void {
     if (!IgnorePatch) {
         try {
             return Reflect.apply(orig, fs, [path, mode]);
         } catch (err) {
-            /* istanbul ignore next */
             if (!chownErOk(err as NodeJS.ErrnoException)) {
                 throw err;
             }
         }
     } else {
-        /* istanbul ignore next */
         return Reflect.apply(orig, fs, [path, mode]);
     }
 }
@@ -1390,6 +1392,7 @@ export function readFile(path: NodeFs.PathOrFileDescriptor, options: unknown, ca
  *
  * Change max time with `process.env["FS-FS_EXTENDER_WIN32_TIMEOUT"]`
  */
+/* istanbul ignore next */
 export function rename(oldPath: NodeFs.PathLike, newPath: NodeFs.PathLike, callback: NodeFs.NoParamCallback): void {
     if (platform === "win32" && !IgnorePatch) {
         const startTime = Date.now();
@@ -1455,6 +1458,7 @@ export function rename(oldPath: NodeFs.PathLike, newPath: NodeFs.PathLike, callb
  *
  * Change max time with `process.env["FS_EXTENDER_WIN32_TIMEOUT_SYNC"]`
  */
+/* istanbul ignore next */
 export function renameSync(oldPath: NodeFs.PathLike, newPath: NodeFs.PathLike): void {
     if (platform === "win32" && !IgnorePatch) {
         const startTime = Date.now();
@@ -2016,13 +2020,14 @@ export function symlink(
  * @param path A path to the new symlink. If a URL is provided, it must use the `file:` protocol.
  */
 export function symlink(target: NodeFs.PathLike, path: NodeFs.PathLike, callback: NodeFs.NoParamCallback): void;
+/* istanbul ignore next */
 export function symlink(
     target: NodeFs.PathLike,
     path: NodeFs.PathLike,
     type: unknown,
     callback?: NodeFs.NoParamCallback
 ): void {
-    if(Type.isFunction(type)) {
+    if (Type.isFunction(type)) {
         callback = type as NodeFs.NoParamCallback;
         type = null;
     }
@@ -2048,6 +2053,7 @@ export function symlink(
  * this API: {@link symlink}.
  * @since v0.1.31
  */
+/* istanbul ignore next */
 export function symlinkSync(
     target: NodeFs.PathLike,
     path: NodeFs.PathLike,

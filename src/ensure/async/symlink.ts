@@ -127,6 +127,7 @@ export function ensureSymlink(
     dstPath: fs.PathLike,
     callback: (err: NodeJS.ErrnoException, dstPath?: fs.PathLike) => void
 ): void;
+/* istanbul ignore next: not tested in windows without Admin perms */
 export function ensureSymlink(srcPath: fs.PathLike, dstPath: fs.PathLike, options?: unknown, callback?: unknown): void {
     const opt = util.getSymlinkOptions(options) as util._EnsureOptionsSymlinkInternal;
     const cb = util.getCallback(options, callback);

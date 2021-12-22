@@ -314,7 +314,7 @@ describe("fs-extender", function () {
                                         let statBefore: fs.Stats | undefined;
                                         try {
                                             statBefore = fs.statSync(NodePath.dirname(dst));
-                                        } catch (err) { }
+                                        } catch (err) {}
                                         d.fn(src, dst, (err: NodeJS.ErrnoException | null) => {
                                             expect(err)
                                                 .to.have.property("code")
@@ -322,7 +322,7 @@ describe("fs-extender", function () {
                                             let statAfter: fs.Stats | undefined;
                                             try {
                                                 statAfter = fs.statSync(NodePath.dirname(dst));
-                                            } catch (err) { }
+                                            } catch (err) {}
                                             expect(statAfter).to.eql(statBefore);
                                             done();
                                         });
@@ -349,9 +349,7 @@ describe("fs-extender", function () {
                                                 expect(fs.lstatSync(dst).isSymbolicLink()).to.be.true;
                                                 //this try catch is for passing at git actions
                                                 //try {
-                                                expect(fs.readdirSync(relative.toCwd)).to.be.eql(
-                                                    fs.readdirSync(dst)
-                                                );
+                                                expect(fs.readdirSync(relative.toCwd)).to.be.eql(fs.readdirSync(dst));
                                                 expect(
                                                     fs
                                                         .readdirSync(NodePath.dirname(dst))
@@ -366,10 +364,10 @@ describe("fs-extender", function () {
                                 case "dir-broken":
                                     test(
                                         "should create broken symlink dir using src '" +
-                                        t.src +
-                                        "' and dst '" +
-                                        t.dst +
-                                        "'",
+                                            t.src +
+                                            "' and dst '" +
+                                            t.dst +
+                                            "'",
                                         function (done) {
                                             d.fn(src, dst, (err: NodeJS.ErrnoException | null) => {
                                                 expect(err).to.be.null;
@@ -392,7 +390,7 @@ describe("fs-extender", function () {
                                         let statBefore: fs.Stats | undefined;
                                         try {
                                             statBefore = fs.statSync(NodePath.dirname(dst));
-                                        } catch (err) { }
+                                        } catch (err) {}
                                         d.fn(src, dst, (err: NodeJS.ErrnoException | null) => {
                                             expect(err)
                                                 .to.have.property("code")
@@ -401,7 +399,7 @@ describe("fs-extender", function () {
                                             let statAfter: fs.Stats | undefined;
                                             try {
                                                 statAfter = fs.statSync(NodePath.dirname(dst));
-                                            } catch (err) { }
+                                            } catch (err) {}
                                             expect(statAfter).to.eql(statBefore);
                                             done();
                                         });
@@ -482,7 +480,7 @@ describe("fs-extender", function () {
                                         let statBefore: fs.Stats | undefined;
                                         try {
                                             statBefore = fs.statSync(NodePath.dirname(dst));
-                                        } catch (err) { }
+                                        } catch (err) {}
                                         const err = await expect(d.fn(src, dst)).to.eventually.rejected;
                                         expect(err)
                                             .to.have.property("code")
@@ -490,7 +488,7 @@ describe("fs-extender", function () {
                                         let statAfter: fs.Stats | undefined;
                                         try {
                                             statAfter = fs.statSync(NodePath.dirname(dst));
-                                        } catch (err) { }
+                                        } catch (err) {}
                                         expect(statAfter).to.eql(statBefore);
                                     });
                                     break;
@@ -513,9 +511,7 @@ describe("fs-extender", function () {
                                             const dirDst = fs.readdirSync(dst);
                                             expect(dirCwd).to.be.eql(dirDst);
                                             expect(
-                                                fs
-                                                    .readdirSync(NodePath.dirname(dst))
-                                                    .indexOf(NodePath.basename(dst))
+                                                fs.readdirSync(NodePath.dirname(dst)).indexOf(NodePath.basename(dst))
                                             ).to.be.at.least(0);
                                         }
                                     );
@@ -523,10 +519,10 @@ describe("fs-extender", function () {
                                 case "dir-broken":
                                     test(
                                         "should create broken symlink dir using src '" +
-                                        t.src +
-                                        "' and dst '" +
-                                        t.dst +
-                                        "'",
+                                            t.src +
+                                            "' and dst '" +
+                                            t.dst +
+                                            "'",
                                         async function () {
                                             await expect(d.fn(src, dst)).to.eventually.fulfilled;
                                             const stat = fs.lstatSync(dst);
@@ -546,7 +542,7 @@ describe("fs-extender", function () {
                                         let statBefore: fs.Stats | undefined;
                                         try {
                                             statBefore = fs.statSync(NodePath.dirname(dst));
-                                        } catch (err) { }
+                                        } catch (err) {}
                                         const err = await expect(d.fn(src, dst)).to.eventually.rejected;
                                         expect(err)
                                             .to.have.property("code")
@@ -555,7 +551,7 @@ describe("fs-extender", function () {
                                         let statAfter: fs.Stats | undefined;
                                         try {
                                             statAfter = fs.statSync(NodePath.dirname(dst));
-                                        } catch (err) { }
+                                        } catch (err) {}
                                         expect(statAfter).to.eql(statBefore);
                                     });
                                     break;
@@ -631,7 +627,7 @@ describe("fs-extender", function () {
                                         let statBefore: fs.Stats | undefined;
                                         try {
                                             statBefore = fs.statSync(NodePath.dirname(dst));
-                                        } catch (err) { }
+                                        } catch (err) {}
                                         expect(() => d.fn(src, dst))
                                             .to.throw()
                                             .to.have.property("code")
@@ -639,7 +635,7 @@ describe("fs-extender", function () {
                                         let statAfter: fs.Stats | undefined;
                                         try {
                                             statAfter = fs.statSync(NodePath.dirname(dst));
-                                        } catch (err) { }
+                                        } catch (err) {}
                                         expect(statAfter).to.eql(statBefore);
                                     });
                                     break;
@@ -677,10 +673,10 @@ describe("fs-extender", function () {
                                 case "dir-broken":
                                     test(
                                         "should create broken symlink dir using src '" +
-                                        t.src +
-                                        "' and dst '" +
-                                        t.dst +
-                                        "'",
+                                            t.src +
+                                            "' and dst '" +
+                                            t.dst +
+                                            "'",
                                         function () {
                                             expect(() => d.fn(src, dst)).to.not.throw();
                                             const stat = fs.lstatSync(dst);
@@ -700,7 +696,7 @@ describe("fs-extender", function () {
                                         let statBefore: fs.Stats | undefined;
                                         try {
                                             statBefore = fs.statSync(NodePath.dirname(dst));
-                                        } catch (err) { }
+                                        } catch (err) {}
                                         expect(() => d.fn(src, dst))
                                             .to.throw()
                                             .to.have.property("code")
@@ -709,7 +705,7 @@ describe("fs-extender", function () {
                                         let statAfter: fs.Stats | undefined;
                                         try {
                                             statAfter = fs.statSync(NodePath.dirname(dst));
-                                        } catch (err) { }
+                                        } catch (err) {}
                                         expect(statAfter).to.eql(statBefore);
                                     });
                                     break;

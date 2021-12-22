@@ -36,10 +36,12 @@ async function compareFiles(
     while (size-- > 0) {
         const pathReduced = util.replace(files1[size].path, d1, "");
         const index = files2Reduced.indexOf(pathReduced);
+        /* istanbul ignore next */
         if (index === -1) {
             return false;
         }
         const result = await compareFn(files1[size].path, files2[index].path, options);
+        /* istanbul ignore next */
         if (result === false) {
             return false;
         }
@@ -48,6 +50,7 @@ async function compareFiles(
 }
 
 /** @internal */
+/* istanbul ignore next */
 async function statCompare(
     dir1: fs.PathLike,
     dir2: fs.PathLike,
@@ -84,6 +87,7 @@ async function _dirByte(
     if ((await statCompare(dir1, dir2, options)) === true) {
         return compareFiles(compareFile.promises.filesByte, dir1, dir2, options);
     }
+    /* istanbul ignore next */
     return false;
 }
 
@@ -119,6 +123,7 @@ export function dirByte(
     path2: fs.PathLike,
     callback: (err: NodeJS.ErrnoException, equal: boolean) => void
 ): void;
+/* istanbul ignore next */
 export function dirByte(path1: fs.PathLike, path2: fs.PathLike, options?: unknown, callback?: unknown): void {
     const opt = internal.getOptions(options);
     const cb = util.getCallback(options, callback);
@@ -176,6 +181,7 @@ export function dirHash(
     path2: fs.PathLike,
     callback: (err: NodeJS.ErrnoException, equal: boolean) => void
 ): void;
+/* istanbul ignore next */
 export function dirHash(path1: fs.PathLike, path2: fs.PathLike, options?: unknown, callback?: unknown): void {
     const opt = internal.getOptions(options);
     const cb = util.getCallback(options, callback);
@@ -244,6 +250,7 @@ export namespace promises {
 }
 
 /** @internal */
+/* istanbul ignore next */
 function statCompareSync(dir1: fs.PathLike, dir2: fs.PathLike, options: internal._CompareOptionsInternal): boolean {
     const statSync = options.dereference ? fs.statSync : fs.lstatSync;
 
@@ -278,6 +285,7 @@ function compareFilesSync(
     const d2 = util.toStringOrBuffer(isBuffer, dir2);
     const items1 = _list.listSync(d1, { dereference: options.dereference });
     const items2 = _list.listSync(d2, { dereference: options.dereference });
+    /* istanbul ignore next */
     if (items1.length !== items2.length) {
         return false;
     }
@@ -288,6 +296,7 @@ function compareFilesSync(
     while (size-- > 0) {
         const pathReduced = util.replace(files1[size].path, d1, "");
         const index = files2Reduced.indexOf(pathReduced);
+        /* istanbul ignore next */
         if (index === -1) {
             return false;
         }
@@ -325,6 +334,7 @@ export function dirByteSync(path1: fs.PathLike, path2: fs.PathLike, options?: in
     if (statCompareSync(dir1, dir2, opt) === true) {
         return compareFilesSync(compareFile.filesByteSync, dir1, dir2, opt);
     }
+    /* istanbul ignore next */
     return false;
 }
 

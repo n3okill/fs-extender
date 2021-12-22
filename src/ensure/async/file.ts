@@ -5,6 +5,7 @@ import * as util from "../util";
 import { Type } from "@n3okill/utils";
 
 /** @internal */
+/* istanbul ignore next */
 async function ensureWriteStream(path: fs.PathLike, options: util._EnsureOptionsFileInternal): Promise<fs.WriteStream> {
     return fs.createWriteStream(path, options.streamOptions);
 }
@@ -23,6 +24,7 @@ async function ensureWriteFile(file: fs.PathLike, options: util._EnsureOptionsFi
 }
 
 /** @internal */
+/* istanbul ignore next */
 async function createFile(
     file: fs.PathLike,
     options: util._EnsureOptionsFileInternal
@@ -93,6 +95,7 @@ export function ensureFile(path: fs.PathLike, options?: unknown, callback?: unkn
 }
 
 /**@internal */
+/* istanbul ignore next */
 async function _ensureFile(
     path: fs.PathLike,
     options: util._EnsureOptionsFileInternal

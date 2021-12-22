@@ -83,6 +83,7 @@ export function size(path: fs.PathLike, options: unknown, callback?: unknown): v
 }
 
 /** @internal */
+/* istanbul ignore next */
 async function _size(path: fs.PathLike, options: _SizeOptionsInternal): Promise<SizeStats> {
     const items = await list.promises.list(path, {
         depth: options.depth,
@@ -134,6 +135,7 @@ async function _size(path: fs.PathLike, options: _SizeOptionsInternal): Promise<
  *      -- sockets: number;
  *      -- characterDevices: number;
  */
+/* istanbul ignore next */
 export function sizeSync(path: fs.PathLike, options?: SizeOptions): SizeStats {
     const opt = getOptions(options);
     const items = list.listSync(path, {
