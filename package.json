@@ -1,6 +1,6 @@
 {
     "name": "fs-extender",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Extras suite for node fs module",
     "license": "MIT",
     "author": {
@@ -39,7 +39,7 @@
         "build:package.json": "node ./build.js",
         "build": "npm run clean:dist && npm run build:mjs && npm run build:cjs && npm run build:package.json",
         "build:watch": "npm run clean:dist && tsc --watch",
-        "pretest":" npm run build",
+        "pretest": " npm run build",
         "unit": "nyc --reporter=lcov --reporter=text mocha",
         "test": "npm run lint && npm run unit",
         "testUlimit": "ulimit -n 50 && mocha --file 'test/patch/maxOpen.test.ts' -f 'max open'",
