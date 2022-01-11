@@ -4,9 +4,9 @@ import chaiAsPromised from "chai-as-promised";
 import { Type } from "@n3okill/utils";
 use(chaiAsPromised);
 
-import * as fs from "../../src/patch";
-import * as json from "../../src/json";
-import { Common, TestDirStructure } from "../Common";
+import * as fs from "../../src/patch/patch.js";
+import * as json from "../../src/json/index.js";
+import { Common, TestDirStructure } from "../Common.js";
 
 const readFileObj = { obj: 123 };
 const day = new Date();

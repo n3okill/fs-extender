@@ -1,7 +1,7 @@
 import NodePath from "path-extender";
-import * as fs from "../../patch";
-import * as ensureDir from "./dir";
-import * as util from "../util";
+import * as fs from "../../patch/patch.js";
+import * as ensureDir from "./dir.js";
+import * as util from "../util.js";
 import { Type } from "@n3okill/utils";
 
 /** @internal */

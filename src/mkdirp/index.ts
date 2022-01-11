@@ -1,7 +1,7 @@
 import NodePath from "path-extender";
-import * as fs from "../patch";
+import * as fs from "../patch/patch.js";
 import { StringUtil, Type, BufferUtil /*, NumberUtil*/ } from "@n3okill/utils";
-import * as util from "../util";
+import * as util from "../util.js";
 import { platform } from "os";
 
 /** @internal */

@@ -6,9 +6,9 @@ import { describe, test, before, after } from "mocha";
 import chaiAsPromised from "chai-as-promised";
 use(chaiAsPromised);
 
-import * as fs from "../../src/patch";
+import * as fs from "../../src/patch/patch.js";
 import * as NodeFs from "fs";
-import { Common, TestDirStructure } from "../Common";
+import { Common, TestDirStructure } from "../Common.js";
 import rewiremock from "rewiremock";
 
 const drive: TestDirStructure = {

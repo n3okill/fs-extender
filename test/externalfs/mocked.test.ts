@@ -11,8 +11,8 @@ import { expect, use } from "chai";
 import { describe, test, before, after } from "mocha";
 import chaiAsPromised from "chai-as-promised";
 use(chaiAsPromised);
-import * as fs from "../../src";
-import { Common, TestDirStructure } from "../Common";
+import * as fs from "../../src/index.js";
+import { Common, TestDirStructure } from "../Common.js";
 import { Readable } from "stream";
 
 /**

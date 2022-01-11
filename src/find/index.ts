@@ -1,8 +1,8 @@
 import * as NodeAssert from "assert";
-import * as fs from "../patch";
-import * as list from "../list";
+import * as fs from "../patch/patch.js";
+import * as list from "../list/index.js";
 import { Type } from "@n3okill/utils";
-import * as util from "../util";
+import * as util from "../util.js";
 import * as NodeUrl from "url";
 
 /** Return an object with fs.PathLike and fs.Stats */

@@ -3,8 +3,8 @@ import { describe, test, before, after } from "mocha";
 import chaiAsPromised from "chai-as-promised";
 use(chaiAsPromised);
 
-import * as find from "../../src/find";
-import { Common, TestDirStructure } from "../Common";
+import * as find from "../../src/find/index.js";
+import { Common, TestDirStructure } from "../Common.js";
 
 const drive: TestDirStructure = {
     "file.txt": "content",

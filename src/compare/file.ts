@@ -1,8 +1,8 @@
 import NodePath from "path-extender";
 import * as NodeCrypto from "crypto";
-import * as fs from "../patch";
-import * as internal from "./_internal";
-import * as util from "../util";
+import * as fs from "../patch/patch.js";
+import * as internal from "./_internal.js";
+import * as util from "../util.js";
 
 /** @internal */
 function compareFiles(

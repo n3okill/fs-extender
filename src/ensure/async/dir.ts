@@ -1,6 +1,6 @@
-import * as util from "../util";
-import * as fs from "../../patch";
-import * as mkdirp from "../../mkdirp";
+import * as util from "../util.js";
+import * as fs from "../../patch/patch.js";
+import * as mkdirp from "../../mkdirp/index.js";
 
 /** @internal */
 async function _ensureDir(path: fs.PathLike, options: util._EnsureOptionsDirInternal): Promise<fs.PathLike> {

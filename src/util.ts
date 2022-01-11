@@ -1,6 +1,6 @@
 import * as NodeUrl from "url";
 import { Type } from "@n3okill/utils";
-import * as fs from "./patch";
+import * as fs from "./patch/patch.js";
 
 /** @hidden */
 export function getCallback(opt: unknown, callback: unknown): (...args: unknown[]) => void {

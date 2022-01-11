@@ -1,8 +1,8 @@
 import { expect, use } from "chai";
 import chaiAsPromised from "chai-as-promised";
 import { after, before, describe, test } from "mocha";
-import * as list from "../../src/list";
-import { Common, TestDirStructure } from "../Common";
+import * as list from "../../src/list/index.js";
+import { Common, TestDirStructure } from "../Common.js";
 use(chaiAsPromised);
 
 const drive: TestDirStructure = {

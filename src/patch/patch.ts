@@ -16,8 +16,8 @@ if (process.env["FS_EXTENDER_FS_OVERRIDE"]) {
 import { Type, NumberUtil } from "@n3okill/utils";
 import { Abortable } from "events";
 import * as NodeOs from "os";
-import * as _rm from "../rm";
-import { getObjectOption, parseBoolean } from "../util";
+import * as _rm from "../rm/index.js";
+import { getObjectOption, parseBoolean } from "../util.js";
 import NodePath from "path-extender";
 
 /**@internal */
@@ -2296,9 +2296,9 @@ export {
     createWriteStream,
     ReadStreamOptions,
     StreamOptions,
-} from "./patchStream";
+} from "./patchStream.js";
 
-export * as promises from "./promises";
+export * as promises from "./promises.js";
 
 export {
     exists,
@@ -2312,4 +2312,4 @@ export {
     statIsSymbolicLinkSync,
     isEmpty,
     isEmptySync,
-} from "./addins";
+} from "./addins.js";

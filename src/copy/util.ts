@@ -1,10 +1,10 @@
 import { Type } from "@n3okill/utils";
-import { FindFilterType, FindResultType, FindFilterTypeAsync } from "../find";
-import * as fs from "../patch";
-import * as util from "../util";
+import { FindFilterType, FindResultType, FindFilterTypeAsync } from "../find/index.js";
+import * as fs from "../patch/patch.js";
+import * as util from "../util.js";
 import { Readable } from "stream";
 
-export { ItemType, getItemType, getItemTypeName } from "../util";
+export { ItemType, getItemType, getItemTypeName } from "../util.js";
 
 /** Options for stream creation when stream is true */
 export type CopyOptionsErrorStream = {

@@ -1,6 +1,6 @@
-import * as fs from "../patch";
-import * as util from "../util";
-import * as list from "../list";
+import * as fs from "../patch/patch.js";
+import * as util from "../util.js";
+import * as list from "../list/index.js";
 
 export type SizeOptions = {
     /** Dereference links, default is false */

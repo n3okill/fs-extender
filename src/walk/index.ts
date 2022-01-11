@@ -1,5 +1,5 @@
-import * as fs from "../patch";
-import * as util from "../util";
+import * as fs from "../patch/patch.js";
+import * as util from "../util.js";
 import NodePath from "path-extender";
 import { Type } from "@n3okill/utils";
 

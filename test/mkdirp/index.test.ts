@@ -4,9 +4,9 @@ import chaiAsPromised from "chai-as-promised";
 use(chaiAsPromised);
 
 import { Type, StringUtil } from "@n3okill/utils";
-import * as mkdirp from "../../src/mkdirp";
-import * as fs from "../../src/patch/patch";
-import { Common, TestDirStructure } from "../Common";
+import * as mkdirp from "../../src/mkdirp/index.js";
+import * as fs from "../../src/patch/patch.js";
+import { Common, TestDirStructure } from "../Common.js";
 
 const drive: TestDirStructure = {
     async: {},

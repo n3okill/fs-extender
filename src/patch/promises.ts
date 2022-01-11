@@ -1,9 +1,9 @@
 import * as NodeFs from "fs";
 const fsAux = process.env["FS_EXTENDER_FS_OVERRIDE"] ? require(process.env["FS_EXTENDER_FS_OVERRIDE"]) : require("fs");
 import { promisify } from "util";
-import * as fs from "./patch";
-import * as _rm from "../rm";
-import * as _copy from "../copy";
+import * as fs from "./patch.js";
+import * as _rm from "../rm/index.js";
+import * as _copy from "../copy/index.js";
 
 Object.keys(fsAux.promises).forEach((key) => {
     module.exports[key] = fsAux.promises[key];

@@ -1,4 +1,4 @@
-import * as fs from "./patch";
+import * as fs from "./patch.js";
 import * as NodeFs from "fs";
 
 declare module "fs" {

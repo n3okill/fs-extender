@@ -3,9 +3,9 @@ import { describe, test, before, after } from "mocha";
 import chaiAsPromised from "chai-as-promised";
 use(chaiAsPromised);
 
-import * as list from "../../src/list";
-import * as size from "../../src/size";
-import { Common, TestDirStructure } from "../Common";
+import * as list from "../../src/list/index.js";
+import * as size from "../../src/size/index.js";
+import { Common, TestDirStructure } from "../Common.js";
 
 const drive: TestDirStructure = {
     "file1.txt": "content 1",

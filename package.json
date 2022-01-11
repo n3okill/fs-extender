@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "Extras suite for node fs module",
     "license": "MIT",
+    "type": "module",
     "author": {
         "name": "João Parreira",
         "email": "joaofrparreira@gmail.com"
@@ -36,16 +37,17 @@
         "clean:dist": "rimraf ./dist",
         "build:mjs": "npx tsc -p tsconfig-mjs.json",
         "build:cjs": "npx tsc -p tsconfig-cjs.json",
-        "build:package.json": "node ./build.js",
+        "build:package.json": "node ./build.cjs",
         "build": "npm run clean:dist && npm run build:mjs && npm run build:cjs && npm run build:package.json",
         "build:watch": "npm run clean:dist && tsc --watch",
-        "pretest":" npm run build",
-        "unit": "nyc --reporter=lcov --reporter=text mocha",
+        "pretest": " npm run build",
+        "unit": "mocha",
+        "unit:coverage": "nyc --reporter=lcov --reporter=text mocha",
         "test": "npm run lint && npm run unit",
-        "testUlimit": "ulimit -n 50 && mocha --file 'test/patch/maxOpen.test.ts' -f 'max open'",
-        "testMemoryLeak": "mocha --file 'test/patch/memory_leak.test.ts' -f 'leak'",
-        "testExternalFs": "mocha --file 'test/externalfs/index.test.ts' -f 'external'",
-        "testExternalMockedFs": "mocha --file 'test/externalfs/mocked.test.ts' -f 'external'",
+        "testUlimit": "ulimit -n 50 && mocha --file \"test/patch/maxOpen.test.ts\" -f \"max open\"",
+        "testMemoryLeak": "mocha --file \"test/patch/memory_leak.test.ts\" -f \"leak\"",
+        "testExternalFs": "mocha --file \"test/externalfs/index.test.ts\" -f \"external\"",
+        "testExternalMockedFs": "mocha --file \"test/externalfs/mocked.test.ts\" -f \"external\"",
         "test-all": "npm run test && npm run testUlimit && npm run testMemoryLeak && npm run testExternalFs && npm run testExternalMockedFs",
         "lint": "eslint src --ext .ts && eslint test --ext .ts",
         "format": "prettier --config .prettierrc \"src/**/*.ts\" \"test/**/*.ts\" \"docs/*.md\" \"README.md\" --write",
@@ -57,15 +59,15 @@
         "typedoc": "typedoc --tsconfig ./tsconfig.json"
     },
     "dependencies": {
-        "@n3okill/utils": "^1.0.1",
-        "path-extender": "^1.0.0"
+        "@n3okill/utils": "^1.0.5",
+        "path-extender": "^1.0.1"
     },
     "devDependencies": {
         "@istanbuljs/nyc-config-typescript": "^1.0.2",
         "@types/chai": "^4.2.22",
         "@types/chai-as-promised": "^7.1.4",
         "@types/mocha": "^9.0.0",
-        "@types/node": "^16.10.3",
+        "@types/node": "^17.0.8",
         "@typescript-eslint/eslint-plugin": "^4.33.0",
         "@typescript-eslint/parser": "^4.33.0",
         "chai": "^4.3.4",
@@ -79,7 +81,7 @@
         "rewiremock": "^3.14.3",
         "ts-node": "^10.4.0",
         "typedoc": "^0.22.10",
-        "typedoc-plugin-markdown": "^3.11.7",
+        "typedoc-plugin-markdown": "^3.11.11",
         "typescript": "^4.4.3"
     },
     "files": [

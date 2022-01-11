@@ -3,7 +3,7 @@
         "ts"
     ],
     "spec": "test/**/*.test.ts",
-    "require": "ts-node/register",
+    "loader": "ts-node/esm",
     "colors": true,
     "recursive": "true",
     "exclude":["test/patch/memory_leak.test.*","test/patch/maxOpen.test.*","test/externalfs/*.test.*"],
