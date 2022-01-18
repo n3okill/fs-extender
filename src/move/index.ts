@@ -154,7 +154,8 @@ function createStreams(options: MoveOptionsInternal): void {
                 r.error = obj.error;
             }
 
-            options.stream?.push(JSON.stringify(r));
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            options.stream!.push(JSON.stringify(r));
         });
         options.streamCopy = streamCopy;
         // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -169,7 +170,8 @@ function createStreams(options: MoveOptionsInternal): void {
             if ("error" in obj) {
                 r.error = obj.error;
             }
-            options.stream?.push(JSON.stringify(r));
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            options.stream!.push(JSON.stringify(r));
         });
         options.streamRm = streamRm;
     }
@@ -203,7 +205,7 @@ type TGetStats = [
 async function checkPaths(src: _PathLike, dst: _PathLike): Promise<TGetStats> {
     const stats = await getStats(src, dst);
 
-    if (stats?.[1]) {
+    if (stats[1]) {
         if (areIdentical(stats[0], stats[1])) {
             const srcBaseName = NodePath.basename(src);
             const dstBaseName = NodePath.basename(dst);
@@ -233,7 +235,7 @@ async function checkPaths(src: _PathLike, dst: _PathLike): Promise<TGetStats> {
         }
     }
     /* istanbul ignore next */
-    if (stats?.[0].isDirectory() && isSrcSubdir(src, dst)) {
+    if (stats[0].isDirectory() && isSrcSubdir(src, dst)) {
         const e = createError("EINVAL", `Cannot move '${src}' to a subdirectory of self '${dst}'`);
         throw e;
     }
@@ -465,7 +467,7 @@ export function moveSync(src: fs.PathLike, dst: fs.PathLike, options?: MoveOptio
 function checkPathsSync(src: _PathLike, dst: _PathLike): TGetStats {
     const stats = getStatsSync(src, dst);
 
-    if (stats?.[1]) {
+    if (stats[1]) {
         if (areIdentical(stats[0], stats[1])) {
             const srcBaseName = NodePath.basename(src);
             const dstBaseName = NodePath.basename(dst);
@@ -494,7 +496,7 @@ function checkPathsSync(src: _PathLike, dst: _PathLike): TGetStats {
         }
     }
     /* istanbul ignore next */
-    if (stats?.[0].isDirectory() && isSrcSubdir(src, dst)) {
+    if (stats[0].isDirectory() && isSrcSubdir(src, dst)) {
         const e = createError("EINVAL", `Cannot move '${src}' to a subdirectory of self '${dst}'`);
         throw e;
     }

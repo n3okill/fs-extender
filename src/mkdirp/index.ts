@@ -355,7 +355,7 @@ function _mkdirpSync(path: string | Buffer, options: _MkdirOptionsInternal): str
                 try {
                     const stats = fs.statSync(p);
                     /* istanbul ignore next */
-                    if (stats?.isDirectory()) {
+                    if (stats.isDirectory()) {
                         return p;
                     }
                     return p;

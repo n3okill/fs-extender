@@ -98,7 +98,7 @@ function _copy(options: util._CopyOptionsInternal): util.CopyStats {
 function checkPathsSync(src: _PathLike, dst: _PathLike, options: util._CopyOptionsInternal): TGetStats {
     const stats = getStatsSync(src, dst, options);
 
-    if (stats?.[1]) {
+    if (stats[1]) {
         if (areIdentical(stats[0], stats[1])) {
             const e = createError("EINVAL", "Source and destination must not be the same.");
             throw e;
@@ -113,7 +113,7 @@ function checkPathsSync(src: _PathLike, dst: _PathLike, options: util._CopyOptio
             throw e;
         }
     }
-    if (stats?.[0].isDirectory() && isSrcSubdir(src, dst)) {
+    if (stats[0].isDirectory() && isSrcSubdir(src, dst)) {
         const e = createError("EINVAL", `Cannot copy '${src}' to a subdirectory of self '${dst}'`);
         throw e;
     }
@@ -258,13 +258,15 @@ function copyOnErrorSync(err: NodeJS.ErrnoException, options: util._CopyOptionsI
 /** @internal */
 /* istanbul ignore next */
 function copyItemSync(options: util._CopyOptionsInternal): util.CopyStats {
-    const item = options.itemsToCopy?.shift();
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const item = options.itemsToCopy!.shift();
     if (item) {
         switch (util.getItemType(item.stats)) {
             case util.ItemType.dir:
                 if (options.ignoreEmptyFolders) {
                     /* istanbul ignore next */
-                    if (options.itemsToCopy?.some((s) => s.path.indexOf(item.path as never) === 0)) {
+                    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                    if (options.itemsToCopy!.some((s) => s.path.indexOf(item.path as never) === 0)) {
                         return copyItemSync(options);
                     }
                 }
