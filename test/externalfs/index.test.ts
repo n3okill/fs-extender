@@ -5,7 +5,7 @@ import { expect, use } from "chai";
 import { describe, test } from "mocha";
 import chaiAsPromised from "chai-as-promised";
 use(chaiAsPromised);
-import * as fs from "../../src/patch/patch.js";
+import * as fs from "../../src/patch/patch";
 
 describe("fs-extender", function () {
     describe("> external fs", function () {

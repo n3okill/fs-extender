@@ -4,9 +4,9 @@ import chaiAsPromised from "chai-as-promised";
 use(chaiAsPromised);
 import * as NodeCrypto from "crypto";
 
-import * as fs from "../../src/patch/patch.js";
-import * as compare from "../../src/compare/file.js";
-import { Common, TestDirStructure } from "../Common.js";
+import * as fs from "../../src/patch/patch";
+import * as compare from "../../src/compare/file";
+import { Common, TestDirStructure } from "../Common";
 
 const drive: TestDirStructure = {
     "file1.txt": "content 1",

@@ -7,8 +7,8 @@ import { describe, test, before, after } from "mocha";
 import chaiAsPromised from "chai-as-promised";
 use(chaiAsPromised);
 
-import * as fs from "../../src/patch/patch.js";
-import { Common, TestDirStructure } from "../Common.js";
+import * as fs from "../../src/patch/patch";
+import { Common, TestDirStructure } from "../Common";
 import rewiremock from "rewiremock";
 
 const drive: TestDirStructure = {
@@ -33,7 +33,7 @@ const common = new Common("fs-extender-patch-rename", drive);
 
 const lockedFiles = new Set();
 const mockFs = rewiremock.proxy(
-    () => require("../../src/patch/patch.js"),
+    () => require("../../src/patch/patch"),
     (r) => ({
         fs: r
             .callThrough()
@@ -60,7 +60,7 @@ const mockFs = rewiremock.proxy(
     })
 );
 const mockFsPromises = rewiremock.proxy(
-    () => require("../../src/patch/promises.js"),
+    () => require("../../src/patch/promises"),
     (r) => ({
         "./patch": r.callThrough().directChildOnly().toBeUsed().with(mockFs),
     })

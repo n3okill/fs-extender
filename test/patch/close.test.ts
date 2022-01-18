@@ -1,7 +1,7 @@
 import { expect } from "chai";
 import { describe, test } from "mocha";
 
-import * as fs from "../../src/patch/patch.js";
+import * as fs from "../../src/patch/patch";
 
 describe("fs-extender", function () {
     describe("> patch", function () {

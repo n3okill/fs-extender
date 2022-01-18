@@ -1,10 +1,10 @@
 import NodePath from "path-extender";
-import * as fs from "../patch/patch.js";
-import * as util from "../util.js";
-import * as mkdirp from "../mkdirp/index.js";
+import * as fs from "../patch";
+import * as util from "../util";
+import * as mkdirp from "../mkdirp";
 import { platform } from "os";
 import { Readable } from "stream";
-import * as list from "../list/index.js";
+import * as list from "../list";
 
 /** @hidden */
 const IsWindows = /^win/.test(platform());

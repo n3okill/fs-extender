@@ -1,7 +1,7 @@
-import * as fs from "../patch/patch.js";
+import * as fs from "../patch";
 import * as NodeAssert from "assert";
 import NodePath from "path-extender";
-import * as util from "../util.js";
+import * as util from "../util";
 import { URL } from "url";
 
 /** Return an array of objects with fs.PahLike and fs.Stats */

@@ -1,6 +1,6 @@
-import * as fs from "../../patch/patch.js";
-import { mkdirpSync } from "../../mkdirp/index.js";
-import * as util from "../util.js";
+import * as fs from "../../patch";
+import { mkdirpSync } from "../../mkdirp";
+import * as util from "../util";
 import { Type } from "@n3okill/utils";
 
 /**

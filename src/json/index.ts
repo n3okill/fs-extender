@@ -1,6 +1,6 @@
-import * as fs from "../patch/patch.js";
-import * as util from "../util.js";
-import * as ensure from "../ensure/index.js";
+import * as fs from "../patch";
+import * as util from "../util";
+import * as ensure from "../ensure";
 import { Type } from "@n3okill/utils";
 import * as readline from "readline";
 

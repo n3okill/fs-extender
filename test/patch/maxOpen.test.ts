@@ -1,8 +1,8 @@
 import { expect } from "chai";
 import { describe, test, before, after } from "mocha";
 
-import * as fs from "../../src/patch/patch.js";
-import { Common, TestDirStructure } from "../Common.js";
+import * as fs from "../../src/patch/patch";
+import { Common, TestDirStructure } from "../Common";
 
 const drive: TestDirStructure = { "file.txt": "content" };
 

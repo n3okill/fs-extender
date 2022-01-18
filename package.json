@@ -3,7 +3,6 @@
     "version": "1.0.1",
     "description": "Extras suite for node fs module",
     "license": "MIT",
-    "type": "module",
     "author": {
         "name": "João Parreira",
         "email": "joaofrparreira@gmail.com"
@@ -20,10 +19,10 @@
         "node": ">= 10.0.0"
     },
     "main": "dist/cjs/index.js",
-    "module": "dist/mjs/index.js",
+    "module": "dist/mjs/index.esm.js",
     "exports": {
         ".": {
-            "import": "./dist/mjs/index.js",
+            "import": "./dist/mjs/index.esm.js",
             "require": "./dist/cjs/index.js"
         }
     },

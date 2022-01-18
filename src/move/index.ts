@@ -1,9 +1,9 @@
 import NodePath from "path-extender";
-import * as fs from "../patch/patch.js";
-import * as mkdirp from "../mkdirp/index.js";
-import * as rm from "../rm/index.js";
-import * as copy from "../copy/index.js";
-import * as util from "../util.js";
+import * as fs from "../patch";
+import * as mkdirp from "../mkdirp";
+import * as rm from "../rm";
+import * as copy from "../copy";
+import * as util from "../util";
 import { platform } from "os";
 import { Readable } from "stream";
 import * as NodeFs from "fs";

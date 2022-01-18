@@ -1,5 +1,5 @@
-import * as fs from "../patch/patch.js";
-import * as util from "../util.js";
+import * as fs from "../patch";
+import * as util from "../util";
 import NodePath from "path-extender";
 import { Type } from "@n3okill/utils";
 
@@ -74,7 +74,7 @@ export function walk(
 export function walk(path: fs.PathLike, options: unknown, walkFunction: unknown, callback?: unknown): void {
     let wf = walkFunction as WalkFunction;
     let cb = callback as (err: NodeJS.ErrnoException | null) => void;
-    if (Type.isFunction(options)) {
+    if (Type.isFunctionType(options)) {
         wf = options as WalkFunction;
         cb = walkFunction as (err: NodeJS.ErrnoException | null) => void;
         options = {};
@@ -161,7 +161,7 @@ export namespace promises {
     export function walk(path: fs.PathLike, walkFunction: WalkAsyncFunction): Promise<void>;
     export function walk(path: fs.PathLike, options: unknown, walkFunction?: unknown): Promise<void> {
         let wf = walkFunction as WalkAsyncFunction;
-        if (Type.isFunction(options) && !walkFunction) {
+        if (Type.isFunctionType(options) && !walkFunction) {
             wf = options as WalkAsyncFunction;
             options = {};
         }

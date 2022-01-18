@@ -1,9 +1,9 @@
 import NodePath from "path-extender";
-import * as _list from "../list/index.js";
-import * as fs from "../patch/patch.js";
-import * as util from "../util.js";
-import * as compareFile from "./file.js";
-import * as internal from "./_internal.js";
+import * as _list from "../list";
+import * as fs from "../patch";
+import * as util from "../util";
+import * as compareFile from "./file";
+import * as internal from "./_internal";
 
 /** @internal */
 async function compareFiles(

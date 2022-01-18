@@ -1,5 +1,5 @@
-export * from "./patch/patch.js";
-export { list, listSync, ListOptions, ListResultType } from "./list/index.js";
+export * from "./patch";
+export { list, listSync, ListOptions, ListResultType } from "./list";
 export {
     find,
     findSync,
@@ -10,11 +10,11 @@ export {
     FindFilterFunctionAsync,
     FindOptionsAsync,
     FindFilterTypeAsync,
-} from "./find/index.js";
-export { mkdirp, mkdirpSync, MkdirpOptions } from "./mkdirp/index.js";
-export { rm, rmSync, emptyDir, emptyDirSync, RmOptions, EmptyDirOptions, RmStreamOutType } from "./rm/index.js";
-export { copy, copySync, CopyOptions, CopyOptionsErrorStream, CopyStats, CopyStreamOutType } from "./copy/index.js";
-export { move, moveSync, MoveOptions, MoveStreamOutType } from "./move/index.js";
+} from "./find";
+export { mkdirp, mkdirpSync, MkdirpOptions } from "./mkdirp";
+export { rm, rmSync, emptyDir, emptyDirSync, RmOptions, EmptyDirOptions, RmStreamOutType } from "./rm";
+export { copy, copySync, CopyOptions, CopyOptionsErrorStream, CopyStats, CopyStreamOutType } from "./copy";
+export { move, moveSync, MoveOptions, MoveStreamOutType } from "./move";
 export {
     dirByte,
     dirByteSync,
@@ -26,7 +26,7 @@ export {
     filesHashSync,
     CompareOptionsByte,
     CompareOptionsHash,
-} from "./compare/index.js";
+} from "./compare";
 export {
     ensureDir,
     ensureDirSync,
@@ -42,7 +42,7 @@ export {
     EnsureOptionsSymlinkType,
     EnsureSymlinkPathsType,
     EnsureOptionsFileStreamOptions,
-} from "./ensure/index.js";
+} from "./ensure";
 export {
     ensureJsonFile,
     ensureJsonFileSync,
@@ -57,22 +57,22 @@ export {
     WriteJsonOptions,
     ReadJsonLineOptions,
     ReadJsonLinesFunction,
-} from "./json/index.js";
-export { size, sizeSync, SizeOptions, SizeStats } from "./size/index.js";
-export { walk, walkSync, WalkAsyncFunction, WalkFunction, WalkOptions } from "./walk/index.js";
+} from "./json";
+export { size, sizeSync, SizeOptions, SizeStats } from "./size";
+export { walk, walkSync, WalkAsyncFunction, WalkFunction, WalkOptions } from "./walk";
 
-import { promises as promisesPatch } from "./patch/index.js";
-import { promises as promisesList } from "./list/index.js";
-import { promises as promisesFind } from "./find/index.js";
-import { promises as promisesMkdirp } from "./mkdirp/index.js";
-import { promises as promisesRm } from "./rm/index.js";
-import { promises as promisesCopy } from "./copy/index.js";
-import { promises as promisesMove } from "./move/index.js";
-import { promises as promisesCompare } from "./compare/index.js";
-import { promises as promisesEnsure } from "./ensure/index.js";
-import { promises as promisesJson } from "./json/index.js";
-import { promises as promisesSize } from "./size/index.js";
-import { promises as promiseWalk } from "./walk/index.js";
+import { promises as promisesPatch } from "./patch";
+import { promises as promisesList } from "./list";
+import { promises as promisesFind } from "./find";
+import { promises as promisesMkdirp } from "./mkdirp";
+import { promises as promisesRm } from "./rm";
+import { promises as promisesCopy } from "./copy";
+import { promises as promisesMove } from "./move";
+import { promises as promisesCompare } from "./compare";
+import { promises as promisesEnsure } from "./ensure";
+import { promises as promisesJson } from "./json";
+import { promises as promisesSize } from "./size";
+import { promises as promiseWalk } from "./walk";
 
 export const promises = {
     ...promisesPatch,

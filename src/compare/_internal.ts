@@ -1,5 +1,5 @@
 import { Type } from "@n3okill/utils";
-import * as util from "../util.js";
+import * as util from "../util";
 
 export type CompareOptionsByte = {
     /** Dereference links, default is false */

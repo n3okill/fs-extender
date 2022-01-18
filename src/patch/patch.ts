@@ -16,8 +16,8 @@ if (process.env["FS_EXTENDER_FS_OVERRIDE"]) {
 import { Type, NumberUtil } from "@n3okill/utils";
 import { Abortable } from "events";
 import * as NodeOs from "os";
-import * as _rm from "../rm/index.js";
-import { getObjectOption, parseBoolean } from "../util.js";
+import * as _rm from "../rm/index";
+import { getObjectOption, parseBoolean } from "../util";
 import NodePath from "path-extender";
 
 /**@internal */
@@ -662,9 +662,9 @@ export function lchmodSync(path: NodeFs.PathLike, mode: NodeFs.Mode): void {
 /**
  * Asynchronously copies `src` to `dest`. By default, `dest` is overwritten if it
  * already exists. No arguments other than a possible exception are given to the
- * callback function. Node.js makes no guarantees about the atomicity of the copy
+ * callback function. Node makes no guarantees about the atomicity of the copy
  * operation. If an error occurs after the destination file has been opened for
- * writing, Node.js will attempt to remove the destination.
+ * writing, Node will attempt to remove the destination.
  *
  * `mode` is an optional integer that specifies the behavior
  * of the copy operation. It is possible to create a mask consisting of the bitwise
@@ -830,7 +830,7 @@ export function lutimesSync(path: NodeFs.PathLike, atime: NodeFs.TimeLike, mtime
  *
  * Some characters (`< > : " / \ | ? *`) are reserved under Windows as documented
  * by [Naming Files, Paths, and Namespaces](https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file). Under NTFS, if the filename contains
- * a colon, Node.js will open a file system stream, as described by [this MSDN page](https://docs.microsoft.com/en-us/windows/desktop/FileIO/using-streams).
+ * a colon, Node will open a file system stream, as described by [this MSDN page](https://docs.microsoft.com/en-us/windows/desktop/FileIO/using-streams).
  *
  * Functions based on `fs.open()` exhibit this behavior as well:`fs.writeFile()`, `fs.readFile()`, etc.
  * @param [flags='r'] See `support of file system `flags``.
@@ -1733,7 +1733,7 @@ function statFixSync(
  * ```text
  * - txtDir
  * -- file.txt
- * - app.js
+ * - app
  * ```
  *
  * The next program will check for the stats of the given paths:
@@ -1985,7 +1985,7 @@ export function lstatSync(path: NodeFs.PathLike, options?: unknown): NodeFs.Stat
  *
  * The `type` argument is only available on Windows and ignored on other platforms.
  * It can be set to `'dir'`, `'file'`, or `'junction'`. If the `type` argument is
- * not set, Node.js will autodetect `target` type and use `'file'` or `'dir'`. If
+ * not set, Node will autodetect `target` type and use `'file'` or `'dir'`. If
  * the `target` does not exist, `'file'` will be used. Windows junction points
  * require the destination path to be absolute. When using `'junction'`, the`target` argument will automatically be normalized to absolute path.
  *
@@ -2198,7 +2198,7 @@ export function unlinkSync(path: NodeFs.PathLike): void {
  * import { writeFile } from 'fs-extender';
  * import { Buffer } from 'buffer';
  *
- * const data = new Uint8Array(Buffer.from('Hello Node.js'));
+ * const data = new Uint8Array(Buffer.from('Hello Node'));
  * writeFile('message.txt', data, (err) => {
  *   if (err) throw err;
  *   console.log('The file has been saved!');
@@ -2210,7 +2210,7 @@ export function unlinkSync(path: NodeFs.PathLike): void {
  * ```js
  * import { writeFile } from 'fs-extender';
  *
- * writeFile('message.txt', 'Hello Node.js', 'utf8', callback);
+ * writeFile('message.txt', 'Hello Node', 'utf8', callback);
  * ```
  *
  * It is unsafe to use `fs.writeFile()` multiple times on the same file without
@@ -2231,7 +2231,7 @@ export function unlinkSync(path: NodeFs.PathLike): void {
  *
  * const controller = new AbortController();
  * const { signal } = controller;
- * const data = new Uint8Array(Buffer.from('Hello Node.js'));
+ * const data = new Uint8Array(Buffer.from('Hello Node'));
  * writeFile('message.txt', data, { signal }, (err) => {
  *   // When a request is aborted - the callback is called with an AbortError
  * });
@@ -2296,9 +2296,9 @@ export {
     createWriteStream,
     ReadStreamOptions,
     StreamOptions,
-} from "./patchStream.js";
+} from "./patchStream";
 
-export * as promises from "./promises.js";
+export * as promises from "./promises";
 
 export {
     exists,
@@ -2312,4 +2312,4 @@ export {
     statIsSymbolicLinkSync,
     isEmpty,
     isEmptySync,
-} from "./addins.js";
+} from "./addins";

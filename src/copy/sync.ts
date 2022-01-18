@@ -1,10 +1,10 @@
-import * as fs from "../patch/patch.js";
+import * as fs from "../patch";
 import NodePath from "path-extender";
 import { Type, BufferUtil } from "@n3okill/utils";
-import * as util from "./util.js";
-import { FindFilterType, FindResultType, findSync } from "../find/index.js";
-import { mkdirpSync } from "../mkdirp/index.js";
-import { toStringOrBuffer, equal, replace } from "../util.js";
+import * as util from "./util";
+import { FindFilterType, FindResultType, findSync } from "../find";
+import { mkdirpSync } from "../mkdirp";
+import { toStringOrBuffer, equal, replace } from "../util";
 
 /** @internal */
 type _PathLike = string | Buffer;

@@ -5,6 +5,6 @@ export {
     EnsureSymlinkPathsType,
     EnsureOptionsSymlinkType,
     EnsureOptionsFileStreamOptions,
-} from "./util.js";
-export * from "./async/index.js";
-export * from "./sync/index.js";
+} from "./util";
+export * from "./async";
+export * from "./sync";

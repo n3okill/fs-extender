@@ -1,8 +1,8 @@
-import * as fs from "./patch.js";
+import * as fs from "./patch";
 const fsAux = process.env["FS_EXTENDER_FS_OVERRIDE"] ? require(process.env["FS_EXTENDER_FS_OVERRIDE"]) : require("fs");
 
 import { Type } from "@n3okill/utils";
-import * as util from "../util.js";
+import * as util from "../util";
 const IgnorePatch = util.parseBoolean(process.env["FS_EXTENDER_IGNORE_PATCH"]);
 
 /**

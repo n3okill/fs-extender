@@ -5,9 +5,9 @@ use(chaiAsPromised);
 
 import { Type } from "@n3okill/utils";
 
-import * as fs from "../../src/patch/patch.js";
-import * as rm from "../../src/rm/index.js";
-import { Common, TestDirStructure } from "../Common.js";
+import * as fs from "../../src/patch/patch";
+import * as rm from "../../src/rm/index";
+import { Common, TestDirStructure } from "../Common";
 import { Readable } from "stream";
 import NodePath from "path-extender";
 

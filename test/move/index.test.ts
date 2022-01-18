@@ -5,9 +5,9 @@ use(chaiAsPromised);
 import { Type } from "@n3okill/utils";
 import rewiremock from "rewiremock";
 
-import * as fs from "../../src/patch/patch.js";
-import * as move from "../../src/move/index.js";
-import { Common, TestDirStructure } from "../Common.js";
+import * as fs from "../../src/patch/patch";
+import * as move from "../../src/move/index";
+import { Common, TestDirStructure } from "../Common";
 import { Readable } from "stream";
 
 const drive: TestDirStructure = {

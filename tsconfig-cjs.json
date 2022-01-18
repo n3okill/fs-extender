@@ -4,5 +4,8 @@
         "module": "commonjs",
         "outDir": "dist/cjs",
         "target": "es2015"
-    }
+    },
+    "exclude": [
+        "src/index.esm.ts"
+    ]
 }

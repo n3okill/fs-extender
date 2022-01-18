@@ -3,8 +3,8 @@ import { describe, test, before, after } from "mocha";
 import chaiAsPromised from "chai-as-promised";
 use(chaiAsPromised);
 
-import * as compare from "../../src/compare/dir.js";
-import { Common, TestDirStructure } from "../Common.js";
+import * as compare from "../../src/compare/dir";
+import { Common, TestDirStructure } from "../Common";
 
 const drive: TestDirStructure = {
     folder1: {

@@ -1,7 +1,7 @@
 import NodePath from "path-extender";
-import * as fs from "../../patch/patch.js";
-import * as util from "../util.js";
-import * as dir from "./dir.js";
+import * as fs from "../../patch";
+import * as util from "../util";
+import * as dir from "./dir";
 
 /** @internal */
 /* istanbul ignore next: not tested in windows without Admin perms */

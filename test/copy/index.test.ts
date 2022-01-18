@@ -4,10 +4,10 @@ import * as NodeCrypto from "crypto";
 import { Type, BufferUtil } from "@n3okill/utils";
 import { after, before, describe, test } from "mocha";
 import NodePath from "path-extender";
-import * as copy from "../../src/copy/index.js";
-import * as fs from "../../src/patch/patch.js";
+import * as copy from "../../src/copy/index";
+import * as fs from "../../src/patch/patch";
 import { Readable } from "stream";
-import { Common, TestDirStructure } from "../Common.js";
+import { Common, TestDirStructure } from "../Common";
 use(chaiAsPromised);
 
 const SIZE = 16; //16 * 64 * 1024 + 7;

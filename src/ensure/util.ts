@@ -1,6 +1,6 @@
-import * as fs from "../patch/patch.js";
+import * as fs from "../patch";
 import { Type } from "@n3okill/utils";
-import * as util from "../util.js";
+import * as util from "../util";
 import * as NodeFs from "fs";
 
 /** Options for ensureDir and ensureDirSync */

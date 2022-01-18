@@ -6,9 +6,9 @@ import NodePath from "path-extender";
 use(chaiAsPromised);
 
 //import * as NodeFs from "fs";
-import * as fs from "../../src/patch/patch.js";
-import * as ensure from "../../src/ensure/index.js";
-import { Common, TestDirStructure } from "../Common.js";
+import * as fs from "../../src/patch/patch";
+import * as ensure from "../../src/ensure/index";
+import { Common, TestDirStructure } from "../Common";
 
 const drive: TestDirStructure = {
     async: {

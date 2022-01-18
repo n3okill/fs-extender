@@ -1,10 +1,10 @@
 import { expect } from "chai";
 import { describe, test } from "mocha";
 
-import * as fs from "../../src/patch/patch.js";
+import * as fs from "../../src/patch/patch";
 import rewiremock from "rewiremock";
 const mockFs = rewiremock.proxy(
-    () => require("../../src/patch/patch.js"),
+    () => require("../../src/patch/patch"),
     (r) => ({
         fs: r
             .directChildOnly()
@@ -27,7 +27,7 @@ const mockFs = rewiremock.proxy(
     })
 );
 const mockFsPromises = rewiremock.proxy(
-    () => require("../../src/patch/promises.js"),
+    () => require("../../src/patch/promises"),
     (r) => ({
         "./patch": r.directChildOnly().toBeUsed().with(mockFs),
     })

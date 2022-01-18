@@ -3,9 +3,9 @@ import { describe, test, before, after } from "mocha";
 import chaiAsPromised from "chai-as-promised";
 use(chaiAsPromised);
 
-import * as fs from "../../src/patch/patch.js";
-import * as ensure from "../../src/ensure/index.js";
-import { Common, TestDirStructure } from "../Common.js";
+import * as fs from "../../src/patch/patch";
+import * as ensure from "../../src/ensure/index";
+import { Common, TestDirStructure } from "../Common";
 
 const drive: TestDirStructure = {
     async: {

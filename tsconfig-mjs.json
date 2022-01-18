@@ -4,5 +4,11 @@
     "module": "esnext",
     "outDir": "dist/mjs",
     "target": "esnext"
-  }
+  },
+  "files": [
+    "src/index.esm.ts"
+  ],
+  "exclude": [
+    "src/**/*.ts"
+  ]
 }
